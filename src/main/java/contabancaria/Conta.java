@@ -101,6 +101,9 @@ public class Conta {
     public void transferir(Conta destino, double valor) {
         // TODO: Implemente usando TDD
         // throw new UnsupportedOperationException();
+        if (valor > saldo) {
+            throw new IllegalStateException("Não há saldo o suficiente.");
+        }
         sacar(valor);
         destino.depositar(valor);
     }

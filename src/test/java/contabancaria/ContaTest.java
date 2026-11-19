@@ -230,7 +230,7 @@ class ContaTest {
         var destino = new Conta("João", 100);
 
         // Act & Assert
-        assertThrows(IllegalStateException.class, () -> origem.transferir(destino, 201);
+        assertThrows(IllegalStateException.class, () -> origem.transferir(destino, 201));
 
         // Assert (conferir que nada mudou)
         assertEquals(200, origem.getSaldo());
