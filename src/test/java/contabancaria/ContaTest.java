@@ -124,6 +124,19 @@ class ContaTest {
     }
 
     // - Depósito em conta inativa lança IllegalStateException
+    @Test
+    void depositar_ContaInativa_LancaIllegalStateException() {
+        // Arrange
+        var conta = new Conta("Maria");
+        conta.encerrar();
+
+        // Act & Assert
+        assertThrows(IllegalStateException.class, () -> conta.depositar(50));
+
+        // Assert
+        assertEquals(0, conta.getSaldo());
+        assertTrue(!conta.isAtiva());
+    }
     // =======================================================
 
     // =======================================================
@@ -177,7 +190,7 @@ class ContaTest {
 
     // - Saque em conta inativa lança IllegalStateException
     @Test
-    void sacar_ContaInativa_Lanca_IllegalArgumentException() {
+    void sacar_ContaInativa_LancaIllegalStateException() {
         // Arrange
         var conta = new Conta("Maria");
         conta.encerrar();
