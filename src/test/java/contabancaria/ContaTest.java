@@ -137,11 +137,23 @@ class ContaTest {
 
         // Act
         conta.sacar(60);
-        // Assert
 
+        // Assert
         assertEquals(40, conta.getSaldo());
     }
+
     // - Saque com valor maior que saldo lança IllegalStateException
+    @Test
+    void sacar_ValorMaiorQueSaldo_IllegalStateException() {
+        // Arrange
+        var conta = new Conta("Maria", 100);
+
+        // Act
+        // Assert
+        assertThrows(IllegalArgumentException.class, () -> conta.sacar(101));
+        assertEquals(100, conta.getSaldo());
+    }
+    
     // - Saque com valor zero lança IllegalArgumentException
     // - Saque com valor negativo lança IllegalArgumentException
     // - Saque em conta inativa lança IllegalStateException
