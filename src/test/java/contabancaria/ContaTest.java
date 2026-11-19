@@ -154,6 +154,15 @@ class ContaTest {
     }
 
     // - Saque com valor zero lança IllegalArgumentException
+    @Test 
+    void sacar_ValorZero_IllegalArgumentException() {
+        // Arrange
+        var conta = new Conta("Maria",100);
+
+        // Act & Assert
+        assertThrows(IllegalArgumentException.class, () -> conta.sacar(0));
+        assertEquals(100, conta.getSaldo());
+    }
     // - Saque com valor negativo lança IllegalArgumentException
     // - Saque em conta inativa lança IllegalStateException
     // =======================================================
