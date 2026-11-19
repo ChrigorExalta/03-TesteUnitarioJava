@@ -202,6 +202,7 @@ class ContaTest {
         // Assert
         assertTrue(!conta.isAtiva());
     }
+
     // - Encerrar conta com saldo lança IllegalStateException
     @Test
     void encerrar_ContaSaldoPositivo_IllegalStateException() {
@@ -211,7 +212,19 @@ class ContaTest {
         // Act & Assert
         assertThrows(IllegalStateException.class, () -> conta.encerrar());
     }
+
     // - Encerrar conta já inativa lança IllegalStateException
+    @Test
+    void encerrar_ContaEncerrada_LancaIllegalStateException() {
+        // Arrange
+        var conta = new Conta("Maria");
+
+        // Act
+        conta.encerrar();
+
+        // Assert
+        assertThrows(IllegalStateException.class, () -> conta.encerrar());
+    }
     // - Conta encerrada tem isAtiva() == false
     // =======================================================
 
