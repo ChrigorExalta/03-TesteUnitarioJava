@@ -64,10 +64,7 @@ public class Conta {
         // TODO: Implemente usando TDD
         // throw new UnsupportedOperationException();
         validarValorPositivo(valor);
-
-        if(!isAtiva()) {
-            throw new IllegalStateException("A conta está encerrada.");
-        }
+        validarContaAtiva();
 
         saldo += valor;
     }
@@ -84,9 +81,12 @@ public class Conta {
         // TODO: Implemente usando TDD
         // throw new UnsupportedOperationException();
         validarValorPositivo(valor);
+        validarContaAtiva();
+
         if (valor > saldo) {
             throw new IllegalStateException("O valor do saque é maior do que o saldo");
         }
+
         saldo -= valor;
     }
 
@@ -126,6 +126,12 @@ public class Conta {
     private void validarValorPositivo(double valor) {
         if (valor <= 0) {
             throw new IllegalArgumentException("O valor deve ser maior que zero.");
+        }
+    }
+
+    private void validarContaAtiva() {
+        if (!isAtiva()) {
+            throw new IllegalStateException("A conta está encerrada.");
         }
     }
 }
