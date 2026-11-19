@@ -192,15 +192,15 @@ class ContaTest {
     // Sugestão de testes:
     // - Encerrar conta com saldo zero funciona
     @Test
-    void encerrar_ContaSaldoZero_() {
+    void encerrar_ContaSaldoZero_DesativaConta() {
         // Arrange
-        var conta = new Conta("Maria", 100);
+        var conta = new Conta("Maria");
 
         // Act
         conta.encerrar();
 
         // Assert
-        assertFalse(conta.isAtiva());
+        assertTrue(!conta.isAtiva());
     }
     // - Encerrar conta com saldo lança IllegalStateException
     // - Encerrar conta já inativa lança IllegalStateException
