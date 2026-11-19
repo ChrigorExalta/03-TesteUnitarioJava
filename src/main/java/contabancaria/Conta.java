@@ -63,9 +63,7 @@ public class Conta {
     public void depositar(double valor) {
         // TODO: Implemente usando TDD
         // throw new UnsupportedOperationException();
-        if (valor <= 0) {
-            throw new IllegalArgumentException("O valor do depósito deve ser maior que zero");
-        }
+        validarValorPositivo(valor);
         saldo += valor;
     }
 
@@ -80,11 +78,9 @@ public class Conta {
     public void sacar(double valor) {
         // TODO: Implemente usando TDD
         // throw new UnsupportedOperationException();
+        validarValorPositivo(valor);
         if (valor > saldo) {
             throw new IllegalStateException("O valor do saque é maior do que o saldo");
-        }
-        if (valor <= 0) {
-            throw new IllegalArgumentException("O valor do saque deve ser maior que zero");
         }
         saldo -= valor;
     }
@@ -113,5 +109,11 @@ public class Conta {
     public void encerrar() {
         // TODO: Implemente usando TDD
         throw new UnsupportedOperationException();
+    }
+
+    private void validarValorPositivo(double valor) {
+        if (valor <= 0) {
+            throw new IllegalArgumentException("O valor deve ser maior que zero.");
+        }
     }
 }
