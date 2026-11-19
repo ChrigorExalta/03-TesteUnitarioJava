@@ -108,8 +108,8 @@ public class Conta {
      */
     public void encerrar() {
         // TODO: Implemente usando TDD
-        throw new UnsupportedOperationException();
-        // ativa = false;
+        // throw new UnsupportedOperationException();
+        ativa = false;
     }
 
     private void validarValorPositivo(double valor) {
