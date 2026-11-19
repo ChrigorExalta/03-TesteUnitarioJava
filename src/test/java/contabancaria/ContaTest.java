@@ -159,7 +159,7 @@ class ContaTest {
 
     // - Saque com valor maior que saldo lança IllegalStateException
     @Test
-    void sacar_ValorMaiorQueSaldo_IllegalStateException() {
+    void sacar_ValorMaiorQueSaldo_LancaIllegalStateException() {
         // Arrange
         var conta = new Conta("Maria", 100);
 
@@ -170,7 +170,7 @@ class ContaTest {
 
     // - Saque com valor zero lança IllegalArgumentException
     @Test
-    void sacar_ValorZero_IllegalArgumentException() {
+    void sacar_ValorZero_LancaIllegalArgumentException() {
         // Arrange
         var conta = new Conta("Maria", 100);
 
@@ -181,7 +181,7 @@ class ContaTest {
 
     // - Saque com valor negativo lança IllegalArgumentException
     @Test
-    void sacar_ValorNegativo_IllegalArgumentException() {
+    void sacar_ValorNegativo_LancaIllegalArgumentException() {
         // Arrange
         var conta = new Conta("Maria", 100);
 
@@ -226,7 +226,7 @@ class ContaTest {
 
     // - Transferência com saldo insuficiente lança exceção
     @Test
-    void transferir_SaldoInsuficiente_lancaIllegalStateException() {
+    void transferir_SaldoInsuficiente_LancaIllegalStateException() {
         // Arrange
         var origem = new Conta("Maria", 200);
         var destino = new Conta("João", 100);
@@ -258,7 +258,7 @@ class ContaTest {
 
     // - Transferência com conta origem inativa lança exceção
     @Test
-    void transferir_ContaOrigemInativa_lancaIllegalStateException() {
+    void transferir_ContaOrigemInativa_LancaIllegalStateException() {
         // Arrange
         var origem = new Conta("Maria");
         origem.encerrar();
@@ -275,7 +275,7 @@ class ContaTest {
 
     // - Transferência com conta destino inativa lança exceção
     @Test
-    void transferir_ContaDestinoInativa_lancaIllegalStateException() {
+    void transferir_ContaDestinoInativa_LancaIllegalStateException() {
         // Arrange
         var origem = new Conta("Maria", 200);
         var destino = new Conta("João");
@@ -294,9 +294,9 @@ class ContaTest {
     // =======================================================
     // Testes para encerrar
     // Sugestão de testes:
+
     // - Encerrar conta com saldo zero funciona
     // - Conta encerrada tem isAtiva() == false
-
     @Test
     void encerrar_ContaSaldoZero_DesativaConta() {
         // Arrange
@@ -311,7 +311,7 @@ class ContaTest {
 
     // - Encerrar conta com saldo lança IllegalStateException
     @Test
-    void encerrar_ContaSaldoPositivo_IllegalStateException() {
+    void encerrar_ContaSaldoPositivo_LancaIllegalStateException() {
         // Arrange
         var conta = new Conta("Maria", 100);
 
