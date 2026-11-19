@@ -154,10 +154,10 @@ class ContaTest {
     }
 
     // - Saque com valor zero lança IllegalArgumentException
-    @Test 
+    @Test
     void sacar_ValorZero_IllegalArgumentException() {
         // Arrange
-        var conta = new Conta("Maria",100);
+        var conta = new Conta("Maria", 100);
 
         // Act & Assert
         assertThrows(IllegalArgumentException.class, () -> conta.sacar(0));
@@ -192,7 +192,16 @@ class ContaTest {
     // Sugestão de testes:
     // - Encerrar conta com saldo zero funciona
     @Test
-    void encerrar_ContaSaldoZero_
+    void encerrar_ContaSaldoZero_() {
+        // Arrange
+        var conta = new Conta("Maria", 100);
+
+        // Act
+        conta.encerrar();
+
+        // Assert
+        assertFalse(conta.isAtiva());
+    }
     // - Encerrar conta com saldo lança IllegalStateException
     // - Encerrar conta já inativa lança IllegalStateException
     // - Conta encerrada tem isAtiva() == false
