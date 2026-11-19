@@ -7,6 +7,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import org.junit.jupiter.params.provider.ValueSource;
+
 /**
  * Testes unitários para a classe Conta.
  *
@@ -223,7 +225,7 @@ class ContaTest {
     }
 
     // - Transferência com saldo insuficiente lança exceção
-    @Test 
+    @Test
     void transferir_SaldoInsuficiente_lancaIllegalStateException() {
         // Arrange
         var origem = new Conta("Maria", 200);
@@ -236,7 +238,23 @@ class ContaTest {
         assertEquals(200, origem.getSaldo());
         assertEquals(100, destino.getSaldo());
     }
+
     // - Transferência com valor zero/negativo lança exceção
+    @ParameterizedTest
+    @ValueSource(doubles = { 0.0, -10.0 })
+    void transferir_ValorNaoPositivo_LancaIllegalArgumentException(double valor) {
+        // Arrange
+        var origem = new Conta("Maria", 200);
+        var destino = new Conta("João", 100);
+
+        // Act & Assert
+        assertThrows(IllegalArgumentException.class, () -> origem.transferir(destino, valor));
+
+        // Assert (nada mudou)
+        assertEquals(200, origem.getSaldo());
+        assertEquals(100, destino.getSaldo());
+
+    }
     // - Transferência com conta origem inativa lança exceção
     // - Transferência com conta destino inativa lança exceção
     // =======================================================
