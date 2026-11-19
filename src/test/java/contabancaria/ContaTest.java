@@ -171,7 +171,7 @@ class ContaTest {
         var conta = new Conta("Maria", 100);
 
         // Act & Assert
-        asserThrows(IllegalArgumentExcepton.class, () -> conta.sacar(-10));
+        assertThrows(IllegalArgumentException.class, () -> conta.sacar(-10));
         assertEquals(100, conta.getSaldo());
 
     }

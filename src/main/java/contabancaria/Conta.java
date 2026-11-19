@@ -83,7 +83,7 @@ public class Conta {
         if (valor > saldo) {
             throw new IllegalStateException("O valor do saque é maior do que o saldo");
         }
-        if (valor == 0) {
+        if (valor <= 0) {
             throw new IllegalArgumentException("O valor do saque deve ser maior que zero");
         }
         saldo -= valor;
