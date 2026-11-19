@@ -220,9 +220,22 @@ class ContaTest {
         // Assert
         assertEquals(150, origem.getSaldo());
         assertEquals(150, destino.getSaldo());
-
     }
+
     // - Transferência com saldo insuficiente lança exceção
+    @Test 
+    void transferir_SaldoInsuficiente_lancaIllegalStateException() {
+        // Arrange
+        var origem = new Conta("Maria", 200);
+        var destino = new Conta("João", 100);
+
+        // Act & Assert
+        assertThrows(IllegalStateException.class, () -> origem.transferir(destino, 201);
+
+        // Assert (conferir que nada mudou)
+        assertEquals(200, origem.getSaldo());
+        assertEquals(100, destino.getSaldo());
+    }
     // - Transferência com valor zero/negativo lança exceção
     // - Transferência com conta origem inativa lança exceção
     // - Transferência com conta destino inativa lança exceção
