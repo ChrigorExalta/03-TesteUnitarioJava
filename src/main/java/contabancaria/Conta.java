@@ -100,7 +100,9 @@ public class Conta {
      */
     public void transferir(Conta destino, double valor) {
         // TODO: Implemente usando TDD
-        throw new UnsupportedOperationException();
+        // throw new UnsupportedOperationException();
+        sacar(valor);
+        destino.depositar(valor);
     }
 
     /**
