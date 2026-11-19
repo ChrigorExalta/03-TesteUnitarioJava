@@ -215,7 +215,7 @@ class ContaTest {
 
     // - Encerrar conta já inativa lança IllegalStateException
     @Test
-    void encerrar_ContaEncerrada_LancaIllegalStateException() {
+    void encerrar_ContaInativa_LancaIllegalStateException() {
         // Arrange
         var conta = new Conta("Maria");
 

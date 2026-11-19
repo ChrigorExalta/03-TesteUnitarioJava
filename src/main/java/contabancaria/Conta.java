@@ -110,7 +110,10 @@ public class Conta {
         // TODO: Implemente usando TDD
         // throw new UnsupportedOperationException();
         if (getSaldo() > 0) {
-            throw new IllegalStateException("Não é possível encerrar uma conta com saldo positivo");
+            throw new IllegalStateException("Não é possível encerrar uma conta com saldo positivo.");
+        }
+        if (isAtiva() == false) {
+            throw new IllegalStateException("Conta permanece inativa.");
         }
         ativa = false;
     }
