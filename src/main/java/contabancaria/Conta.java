@@ -64,6 +64,11 @@ public class Conta {
         // TODO: Implemente usando TDD
         // throw new UnsupportedOperationException();
         validarValorPositivo(valor);
+
+        if(!isAtiva()) {
+            throw new IllegalStateException("A conta está encerrada.");
+        }
+
         saldo += valor;
     }
 
