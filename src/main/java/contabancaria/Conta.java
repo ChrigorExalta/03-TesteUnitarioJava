@@ -79,7 +79,8 @@ public class Conta {
      */
     public void sacar(double valor) {
         // TODO: Implemente usando TDD
-        throw new UnsupportedOperationException();
+        //throw new UnsupportedOperationException();
+        saldo -= valor;
     }
 
     /**
