@@ -93,11 +93,6 @@ class ContaTest {
     // Testes para depositar
     // Sugestão de testes:
     // - Depósito com valor válido atualiza o saldo
-    // - Depósito com valor zero lança IllegalArgumentException
-    // - Depósito com valor negativo lança IllegalArgumentException
-    // - Depósito em conta inativa lança IllegalStateException
-    // =======================================================
-
     @Test
     void depositar_ValorValido_AtualizaSaldo() {
         // Arrange
@@ -110,6 +105,7 @@ class ContaTest {
         assertEquals(150, conta.getSaldo());
     }
 
+    // - Depósito com valor zero lança IllegalArgumentException
     @Test
     void depositar_ValorZero_LancaIllegalArgumentException() {
         var conta = new Conta("Maria", 100);
@@ -118,6 +114,7 @@ class ContaTest {
         assertEquals(100, conta.getSaldo(), 0.001);
     }
 
+    // - Depósito com valor negativo lança IllegalArgumentException
     @Test
     void depositar_ValorNegativo_LancaIllegalArgumentException() {
         var conta = new Conta("Maria", 100);
@@ -126,10 +123,24 @@ class ContaTest {
         assertEquals(100, conta.getSaldo());
     }
 
+    // - Depósito em conta inativa lança IllegalStateException
+    // =======================================================
+
     // =======================================================
     // Testes para sacar
     // Sugestão de testes:
     // - Saque com valor válido atualiza o saldo
+    @Test
+    void sacar_ValorValido_AtualizaSaldo() {
+        // Arrange
+        var conta = new Conta("Maria", 100);
+
+        // Act
+        conta.sacar(60);
+        // Assert
+
+        assertEquals(40, conta.getSaldo());
+    }
     // - Saque com valor maior que saldo lança IllegalStateException
     // - Saque com valor zero lança IllegalArgumentException
     // - Saque com valor negativo lança IllegalArgumentException
