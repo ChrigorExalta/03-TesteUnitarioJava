@@ -257,7 +257,7 @@ class ContaTest {
     }
 
     // - Transferência com conta origem inativa lança exceção
-    @Test 
+    @Test
     void transferir_ContaOrigemInativa_lancaIllegalStateException() {
         // Arrange
         var origem = new Conta("Maria");
@@ -272,7 +272,23 @@ class ContaTest {
         assertEquals(100, destino.getSaldo());
 
     }
+
     // - Transferência com conta destino inativa lança exceção
+    @Test
+    void transferir_ContaDestinoInativa_lancaIllegalStateException() {
+        // Arrange
+        var origem = new Conta("Maria", 200);
+        var destino = new Conta("João");
+        destino.encerrar();
+
+        // Act & Assert
+        assertThrows(IllegalStateException.class, () -> origem.transferir(destino, 50));
+
+        // Assert (nada mudou)
+        assertEquals(200, origem.getSaldo());
+        assertEquals(0, destino.getSaldo());
+
+    }
     // =======================================================
 
     // =======================================================
